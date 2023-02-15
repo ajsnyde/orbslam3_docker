@@ -47,3 +47,8 @@ docker exec -it orbslam3 bash -i -c "git clone -b master https://github.com/ajsn
 # Compile ORBSLAM3-ROS
 docker exec -it orbslam3 bash -i -c "echo 'ROS_PACKAGE_PATH=/opt/ros/melodic/share:/ORB_SLAM3/Examples/ROS'>>~/.bashrc && source ~/.bashrc && cd /ORB_SLAM3 && chmod +x build_ros.sh && ./build_ros.sh"
 
+chmod -R 777  ORB_SLAM3/
+
+cp -a shared/. ORB_SLAM3/
+
+docker exec -it orbslam3 bash
