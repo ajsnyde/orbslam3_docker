@@ -42,7 +42,7 @@ docker run -td --privileged --net=host --ipc=host \
     jahaniam/orbslam3:ubuntu18_melodic_cpu bash
     
 # Git pull orbslam and compile
-docker exec -it orbslam3 bash -i -c "git clone -b docker_opencv3.2_fix https://github.com/jahaniam/ORB_SLAM3 /ORB_SLAM3 && cd /ORB_SLAM3 && chmod +x build.sh && ./build.sh "
+docker exec -it orbslam3 bash -i -c "git clone -b docker_opencv3.2_fix https://github.com/ajsnyde/ORB_SLAM3 /ORB_SLAM3 && cd /ORB_SLAM3 && chmod +x build.sh && ./build.sh "
 # Compile ORBSLAM3-ROS
 docker exec -it orbslam3 bash -i -c "echo 'ROS_PACKAGE_PATH=/opt/ros/melodic/share:/ORB_SLAM3/Examples/ROS'>>~/.bashrc && source ~/.bashrc && cd /ORB_SLAM3 && chmod +x build_ros.sh && ./build_ros.sh"
 
