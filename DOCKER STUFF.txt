@@ -1,0 +1,90 @@
+DOCKER STUFF
+
+sudo docker ps
+sudo docker container kill 09f97cb9575a
+sudo ./build_container_cpu.sh
+
+sudo docker exec -it orbslam3 bash
+
+rostopic list
+
+//CALIBRATION
+rosdep install camera_calibration
+rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.108 image:=/usb_cam/image_raw camera:=/usb_cam
+https://answers.ros.org/question/366253/calibration-data-to-orb-salm-2/
+
+
+// record camera input
+rosbag record /usb_cam/image_raw
+
+// playback bag
+rosbag play --pause 2023-01-18-15-26-52.bag /usb_cam/image_raw:=/usb_cam/image_raw
+
+//set usb_cam device
+nano /opt/ros/melodic/share/usb_cam/launch/usb_cam-test.launch
+rosrun usb_cam usb_cam_node
+
+
+
+<launch>
+  <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+    <param name="video_device" value="/dev/video6" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="usb_cam" />
+    <param name="io_method" value="mmap"/>
+  </node>
+  <node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
+    <remap from="image" to="/usb_cam/image_raw"/>
+    <param name="autosize" value="true" />
+  </node>
+</launch>
+
+
+to
+
+<launch>
+ <group ns="camera1">
+  <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+    <param name="video_device" value="/dev/video4" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="usb_cam" />
+    <param name="io_method" value="mmap"/>
+  </node>
+  <node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
+    <remap from="image" to="/usb_cam/image_raw"/>
+    <param name="autosize" value="true" />
+  </node>
+  </group>
+ <group ns="camera2">
+  <node name="usb_cam2" pkg="usb_cam" type="usb_cam_node" output="screen" >
+    <param name="video_device" value="/dev/video6" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="usb_cam" />
+    <param name="io_method" value="mmap"/>
+  </node>
+  <node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
+    <remap from="image" to="/usb_cam2/image_raw"/>
+    <param name="autosize" value="true" />
+  </node>
+  </group>
+</launch>
+
+
+
+// start USB CAM
+rosrun usb_cam usb_cam_node _video_device:='/dev/video0' _image_height:='1080' _image_width:='1920'
+
+// roscore
+roscore
+
+// start SLAM
+rosrun ORB_SLAM3 Mono Vocabulary/ORBvoc.txt Examples/Monocular/EuRoC.yaml
+
+// mono read video file
+Examples/Monocular/mono_euroc Vocabulary/ORBvoc.txt Examples/Monocular/EuRoC.yaml test.mp4
