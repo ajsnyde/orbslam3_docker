@@ -1,2 +1,5 @@
 Datasets/*
-ORB_SLAM3/*
+ORB_SLAM3**
+
+*.MP4
+*.mp4
