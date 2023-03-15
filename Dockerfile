@@ -74,6 +74,34 @@ RUN cd /tmp && git clone https://github.com/stevenlovegrove/Pangolin && \
     make -j$nproc && make install && \
     cd / && rm -rf /tmp/Pangolin
 
+#RUN git clone https://github.com/stevenlovegrove/Pangolin.git && \
+#sudo apt install libglew-dev && \
+#cd Pangolin && mkdir build && cd build && \
+#cmake .. && \
+#make -j 32 && \
+#sudo make install && \
+#cd $HOME
+#
+#RUN git clone https://github.com/google/glog && \
+#cd glog && \
+#cmake -H. -B build -G "Unix Makefiles" && \
+#cmake --build build && \
+#cmake --build build --target test && \
+#cd build && \
+#sudo make install && \
+#cd $HOME
+#
+#RUN git clone https://github.com/opencv/opencv && \
+#git -C opencv checkout 4.5.1 && \
+#git clone https://github.com/opencv/opencv_contrib && \
+#git -C opencv_contrib checkout 4.5.1 && \
+#git clone https://github.com/opencv/opencv_extra && \
+#git -C opencv_extra checkout 4.5.1 && \
+#cmake .. && \
+#make -j4 && \
+#sudo make install && \
+#cd $HOME
+
 COPY ros_entrypoint.sh /ros_entrypoint.sh
 RUN chmod +x  /ros_entrypoint.sh
 ENV ROS_DISTRO melodic

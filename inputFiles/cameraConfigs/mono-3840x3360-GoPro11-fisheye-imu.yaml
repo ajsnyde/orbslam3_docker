@@ -5,25 +5,26 @@
 #--------------------------------------------------------------------------------------------
 Camera.type: "KannalaBrandt8"
 
-# Camera calibration and distortion parameters (OpenCV) 
-Camera.fx: 314.9144535262124 # 190.97847715128717
-Camera.fy: 315.5137085831059 # 190.9733070521226
-Camera.cx: 366.5971547886410 # 254.93170605935475
-Camera.cy: 311.1050547267676 # 256.8974428996504
 
-# Equidistant distortion 0.0034823894022493434, 0.0007150348452162257, -0.0020532361418706202, 0.00020293673591811182
+# Camera calibration and distortion parameters (OpenCV) 
+Camera.fx: 841.945 # 190.97847715128717
+Camera.fy: 841.945 # 190.9733070521226
+Camera.cx: 967.348 # 254.93170605935475
+Camera.cy: 834.301 # 256.8974428996504
+
+# Equidistant distortion
 # Camera.bFishEye: 1
-Camera.k1: -.2369947396675609 # 0.0034823894022493434
-Camera.k2: .05554938353678404 # 0.0007150348452162257
-Camera.k3: -0.002053236141 # -0.0020532361418706202
-Camera.k4: 0.000202936736 # 0.00020293673591811182
+Camera.k1: 0.0485829
+Camera.k2: 0.0209498
+Camera.k3: 0.0145283
+Camera.k4: -0.0188735
     
 # Camera resolution
-Camera.width: 720
-Camera.height: 630
+Camera.width: 3840
+Camera.height: 3360
 
 # Camera frames per second 
-Camera.fps: 140.0
+Camera.fps: 60.0
 
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
 Camera.RGB: 1

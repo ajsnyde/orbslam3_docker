@@ -1,0 +1,76 @@
+# EuRoC monocular model
+
+Camera:
+  name: "EuRoC monocular"
+  setup: "monocular"
+  model: "perspective"
+
+  fx: 858.29573525972557
+  fy: 864.83354673961242
+  cx: 682.24847121901712
+  cy: 477.35760370119141
+
+  k1: .3563806037319490
+  k2: .22097784016802613
+  p1: -.025029942911420921
+  p2: .0057680163408809484
+  k3: 0.0
+
+  fps: 120.0
+  cols: 1352
+  rows: 1014
+
+  color_order: "RGB"
+
+Preprocessing:
+  min_size: 20000
+
+Feature:
+  name: "default ORB feature extraction setting"
+  scale_factor: 1.2
+  num_levels: 17
+  ini_fast_threshold: 30
+  min_fast_threshold: 13
+  
+ORB Configuration:
+- number of keypoints: 2000
+- scale factor: 1.2
+- number of levels: 8
+- initial fast threshold: 20
+- minimum fast threshold: 7
+- edge threshold: 19
+- patch size: 31
+- half patch size: 15
+- mask rectangles:
+  - [0, 1, 0, 0.1]
+  - [0, 1, 0.84, 1]
+  - [0, 0.2, 0.7, 1]
+  - [0.8, 1, 0.7, 1]
+
+Mapping:
+  backend: "g2o"
+  baseline_dist_thr_ratio: 0.02
+  redundant_obs_ratio_thr: 0.9
+  num_covisibilities_for_landmark_generation: 20
+  num_covisibilities_for_landmark_fusion: 20
+
+Tracking:
+  backend: "g2o"
+
+LoopDetector:
+  backend: "g2o"
+
+System:
+  map_format: "msgpack"
+
+PangolinViewer:
+  keyframe_size: 0.07
+  keyframe_line_width: 1
+  graph_line_width: 1
+  point_size: 2
+  camera_size: 0.08
+  camera_line_width: 3
+  viewpoint_x: 0
+  viewpoint_y: -0.65
+  viewpoint_z: -1.9
+  viewpoint_f: 400
