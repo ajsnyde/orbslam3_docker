@@ -16,9 +16,35 @@ Camera.k2: -0.00531
 Camera.p1: -0.00156
 Camera.p2: 0.00400
 
+Camera2.fx: 647.72690
+Camera2.fy: 647.72690
+Camera2.cx: 672.33212
+Camera2.cy: 384.19279
+
+Camera2.k1: 0.01025
+Camera2.k2: -0.00400
+Camera2.p1: 0.00104
+Camera2.p2: -0.00107
+
+Tlr: !!opencv-matrix
+  rows: 3
+  cols: 4
+  dt: f
+  data: [ 1.0, 0.0, 0.0, -0.1011989,
+            0.0,1.0,0.0,-0.0007963,
+            0.0,0.0,1.0,0.0022692]
+
 # Camera resolution
 Camera.width: 1352 
 Camera.height: 760
+
+# Lapping area between images
+#Camera.lappingBegin: 0
+# ESTIMATED!
+#Camera.lappingEnd: 752
+
+Camera2.width: 1352 
+Camera2.height: 760
 
 # Camera frames per second 
 Camera.fps: 240
@@ -26,12 +52,17 @@ Camera.fps: 240
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
 Camera.RGB: 1
 
+# Close/Far threshold. Baseline times.
+ThDepth: 2.0
+
+Camera.bf: 64.77269
+
 #--------------------------------------------------------------------------------------------
 # ORB Parameters
 #--------------------------------------------------------------------------------------------
 
 # ORB Extractor: Number of features per image
-ORBextractor.nFeatures: 20000
+ORBextractor.nFeatures: 40000
 
 # ORB Extractor: Scale factor between levels in the scale pyramid   
 ORBextractor.scaleFactor: 1.2
@@ -43,18 +74,18 @@ ORBextractor.nLevels: 17
 # Image is divided in a grid. At each cell FAST are extracted imposing a minimum response.
 # Firstly we impose iniThFAST. If no corners are detected we impose a lower value minThFAST
 # You can lower these values if your images have low contrast     
-ORBextractor.iniThFAST: 30
-ORBextractor.minThFAST: 13
+ORBextractor.iniThFAST: 40
+ORBextractor.minThFAST: 19
 
 #--------------------------------------------------------------------------------------------
 # Viewer Parameters
 #---------------------------------------------------------------------------------------------
-Viewer.KeyFrameSize: 0.05
+Viewer.KeyFrameSize: 0.08
 Viewer.KeyFrameLineWidth: 1
 Viewer.GraphLineWidth: 0.9
 Viewer.PointSize: 2
-Viewer.CameraSize: 0.08
-Viewer.CameraLineWidth: 3
+Viewer.CameraSize: 0.5
+Viewer.CameraLineWidth: 5
 Viewer.ViewpointX: 0
 Viewer.ViewpointY: -0.7
 Viewer.ViewpointZ: -1.8
