@@ -1,6 +1,6 @@
 
 # set iw/2 for 4:3, iw/4 for everything else
-for i in raw/**.MP4; do ffmpeg -n -i "$i" -vf scale=iw/4:ih/4 -map 0:0 -map 0:3 "downsized/$(basename ${i%.*}).mp4"; done
+for i in raw/**.MP4; do ffmpeg -n -i "$i" -vf scale=iw/2:ih/2 -map 0:0 -map 0:3 "downsized/$(basename ${i%.*}).mp4"; done
 
 
 for i in downsized/**.mp4; do extract "downsized/$(basename ${i%.*}).mp4" 0 99999999999999; done

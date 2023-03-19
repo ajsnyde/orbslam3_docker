@@ -59,14 +59,11 @@ docker exec -it orbslam3 bash -i -c "sudo apt-get -y install v4l-utils"
 docker exec -it orbslam3 bash -i -c "sudo apt -y install ffmpeg"
 docker exec -it orbslam3 bash -i -c "sudo apt -y install nano"
 docker exec -it orbslam3 bash -i -c "sudo apt -y install v4l2loopback-dkms"
-# Install USB Cam stuffs
-docker exec -it orbslam3 bash -i -c "sudo apt -y install ros-melodic-desktop-full ros-melodic-usb-cam"
-docker exec -it orbslam3 bash -i -c "apt-get -y install ros-melodic-cv-camera"
 
 docker exec -it orbslam3 bash -i -c "echo 'source /opt/ros/melodic/setup.bash' >> ~/.bashrc"
-docker exec -it orbslam3 bash -i -c "echo 'export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:\$WORKDIR/ORB_SLAM3/Examples/ROS/' >> ~/.bashrc"
+#docker exec -it orbslam3 bash -i -c "echo 'export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:\$WORKDIR/ORB_SLAM3/Examples/ROS/' >> ~/.bashrc"
 
-docker exec -it orbslam3 bash -i -c "rosdep install camera_calibration"
+#docker exec -it orbslam3 bash -i -c "rosdep install camera_calibration"
 
 chmod -R 777  ORB_SLAM3/
 
